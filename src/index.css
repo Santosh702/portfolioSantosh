@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-sans;
+  }
+}
+
+.torn-edge {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V120H1200V0C1150,20,1100,10,1050,30C1000,50,950,40,900,60C850,80,800,70,750,90C700,110,650,100,600,120C550,100,500,110,450,90C400,70,350,80,300,60C250,40,200,50,150,30C100,10,50,20,0,0Z' fill='black'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+}
+
+.wavy-stripe {
+  background: linear-gradient(to bottom, transparent 30%, #0033FF 30%, #0033FF 70%, transparent 70%);
+  position: relative;
+}
+
+.wavy-text {
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    white 35%,
+    #0033FF 35%,
+    #0033FF 65%,
+    white 65%,
+    white 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.torn-wavy-mask {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,30 L50,25 L100,35 L150,20 L200,40 L250,25 L300,45 L350,30 L400,50 L450,35 L500,55 L550,40 L600,60 L650,45 L700,65 L750,50 L800,70 L850,55 L900,75 L950,60 L1000,80 L1050,65 L1100,85 L1150,70 L1200,90 L1200,120 L0,120 Z' fill='black'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+}
+
+.torn-text-stripe {
+  position: relative;
+  display: inline-block;
+}
+
+.torn-text-stripe::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #0033FF;
+  clip-path: polygon(
+    0% 35%, 5% 32%, 10% 38%, 15% 30%, 20% 42%, 25% 33%, 30% 45%, 35% 36%, 40% 48%, 45% 39%, 50% 50%, 55% 41%, 60% 52%, 65% 43%, 70% 55%, 75% 46%, 80% 58%, 85% 49%, 90% 60%, 95% 51%, 100% 63%,
+    100% 75%, 95% 72%, 90% 78%, 85% 70%, 80% 82%, 75% 73%, 70% 85%, 65% 76%, 60% 88%, 55% 79%, 50% 90%, 45% 81%, 40% 92%, 35% 83%, 30% 95%, 25% 86%, 20% 98%, 15% 89%, 10% 100%, 5% 91%, 0% 100%
+  );
+  z-index: 1;
+}
